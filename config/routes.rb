@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  # get 'users/show'　を消して『resources :users, only: [:show]』　を下記に追加。＊重複を避けるため
   devise_for :users
   root to: 'homes#top'
   
@@ -10,6 +11,11 @@ Rails.application.routes.draw do
     
     resources :post_comments, only: [:create, :destroy]
   end
+  
+  #ここ！
+   # 以下の行のonly: []内にeditを追加
+    # 以下の行のonly: []内にupdateを追加
+  resources :users, only: [:show, :edit, :update]
 
 
 end
